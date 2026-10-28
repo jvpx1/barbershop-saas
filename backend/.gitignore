@@ -1,0 +1,17 @@
+# Dependências e Builds
+**/node_modules/
+**/dist/
+**/build/
+
+# Variáveis de ambiente
+**/.env
+**/.env.*
+
+# Prisma
+**/generated/prisma/
+
+# Pastas locais de IDE e ferramentas de IA
+**/.agents/
+**/.claude/
+**/.windsurf/
+**/.vscode/
