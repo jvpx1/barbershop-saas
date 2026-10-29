@@ -115,11 +115,16 @@ router.get("/me", requireAuth, async (req, res) => {
       name: true,
       email: true,
       role: true,
-      barbershop: { select: { id: true, name: true, slug: true } },
+      barbershop: { select: { id: true, name: true, slug: true, timezone: true} },
     },
   });
-
   res.json(user);
 });
+
+router.get("/health", async (req, res) => {
+  res.json({ status: "ok" });
+});
+
+
 
 export default router;
