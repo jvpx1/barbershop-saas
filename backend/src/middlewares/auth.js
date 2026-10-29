@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { env } from "../config/env.js";
 
 export function requireAuth(req, res, next) {
   const header = req.headers.authorization ?? "";
@@ -9,7 +10,7 @@ export function requireAuth(req, res, next) {
   }
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const payload = jwt.verify(token, env.JWT_SECRET);
     req.user = {
       id: Number(payload.sub),
       barbershopId: payload.barbershopId,

@@ -3,13 +3,15 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { prisma } from "../lib/prisma.js";
 import { requireAuth } from "../middlewares/auth.js";
+import { env } from "../config/env.js";
+
 
 const router = Router();
 
 function signToken(user) {
   return jwt.sign(
     { barbershopId: user.barbershopId, role: user.role },
-    process.env.JWT_SECRET,
+    env.JWT_SECRET,
     { subject: String(user.id), expiresIn: "7d" }
   );
 }
